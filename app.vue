@@ -1,6 +1,6 @@
 <template>
-  <NuxtPage />
   <NuxtLayout />
+  <NuxtPage />
 </template>
 <script setup>
 const page = ref("home");
