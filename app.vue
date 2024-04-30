@@ -1,7 +1,6 @@
 <template>
-  <nuxt-link to="/">Home</nuxt-link>
-  <nuxt-link to="/about">About</nuxt-link>
   <NuxtPage />
+  <NuxtLayout />
 </template>
 <script setup>
 const page = ref("home");
