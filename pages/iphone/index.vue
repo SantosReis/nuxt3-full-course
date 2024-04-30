@@ -6,7 +6,7 @@
     >
       <h2>Iphone 12</h2>
       <div class="flex justify-center">
-        <img with="200" src="assets/images/iphone-12.webp" alt="" />
+        <img with="200" src="public/images/iphone-12.webp" alt="" />
       </div>
     </NuxtLink>
     <NuxtLink
