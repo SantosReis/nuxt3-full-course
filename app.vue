@@ -1,15 +1,14 @@
 <template>
-  <button @click="toggle">Toggle</button>
-  <div v-if="MyComponent === 'welcome'">
-    <HomeWelcome />
-  </div>
-  <Counter v-else />
+  <a href="#" @click="view('home')">Home</a>
+  <a href="#" @click="view('counter')">Counter</a>
+
+  <HomeWelcome v-if="page === 'home'" />
+  <Counter v-if="page === 'counter'" />
 </template>
 <script setup>
-// const MyComponent = shallowRef("Counter");
-const MyComponent = ref("counter");
+const page = ref("home");
 
-function toggle() {
-  MyComponent.value = "welcome";
+function view(name) {
+  page.value = name;
 }
 </script>
