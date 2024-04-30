@@ -4,6 +4,8 @@
 
   <LazyHomeWelcome v-if="page === 'home'" />
   <LazyCounter v-if="page === 'counter'" />
+
+  <NuxtPage />
 </template>
 <script setup>
 const page = ref("home");
