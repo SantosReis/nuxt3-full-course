@@ -30,11 +30,17 @@ const name = computed(() => {
   return route.params.name.replaceAll("-", " ");
 });
 
+const fullname = computed(() => {
+  return `iphone-${route.params.name}`;
+});
+
 const cart = useCart();
 function addToCart() {
-  cart.value.push({
-    name: `iphone-${route.params.name}`,
-  });
+  const found = cart.value.find((ct) => ct.name === fullname.value);
+  if (!found) {
+    cart.value.push({ name: fullname });
+  }
+  console.log(found);
 }
 
 // useHead({
