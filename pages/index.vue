@@ -1,1 +1,1 @@
-<template>Hello Index</template>
+<template><h1>Home Index</h1></template>
