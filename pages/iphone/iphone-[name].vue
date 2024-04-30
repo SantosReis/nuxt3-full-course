@@ -16,7 +16,8 @@
             @click="addToCart"
             class="p-3 bg-indigo-900 text-white rounded-md mt-5 w-48"
           >
-            Buy Now
+            <span v-if="isInCart()">Remove from Cart </span>
+            <span v-else>Buy Now </span>
           </button>
         </div>
       </div>
@@ -35,12 +36,17 @@ const fullname = computed(() => {
 });
 
 const cart = useCart();
+
+function isInCart() {
+  return !!cart.value.find((ct) => ct.name === fullname.value);
+}
+
 function addToCart() {
-  const found = cart.value.find((ct) => ct.name === fullname.value);
-  if (!found) {
+  if (!isInCart()) {
     cart.value.push({ name: fullname });
+  } else {
+    cart.value = cart.value.filter((ct) => ct.name !== fullname.value);
   }
-  console.log(found);
 }
 
 // useHead({
