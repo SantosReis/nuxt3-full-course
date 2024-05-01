@@ -7,6 +7,7 @@
     <nuxt-link to="/iphone">Iphones</nuxt-link>
     <nuxt-link to="/profile">Profile</nuxt-link>
     <p>Cart ({{ cart.length }})</p>
+    <p>Total Route Changed : {{ pageVisitCount }}</p>
     <div v-if="auth.isAuthenticated">
       <NuxtLink to="/profile">Profile</NuxtLink>
       <button class="ml-4" @click="logout">Logout</button>
@@ -16,4 +17,9 @@
 <script setup>
 const cart = useCart();
 const auth = useAuth();
+const pageVisitCount = ref(0);
+
+onMounted(() => {
+  pageVisitCount.value = usePageVisitCount();
+});
 </script>
