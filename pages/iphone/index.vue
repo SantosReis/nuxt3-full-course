@@ -1,21 +1,14 @@
 <template>
   <div class="grid grid-cols-4 gap-4">
     <NuxtLink
-      to="/iphone/iphone-12"
+      v-for="iphone in iphones"
+      :key="iphone"
+      :to="`/iphone/${iphone}`"
       class="shadow-lg border rounded-lg text-center"
     >
-      <h2>Iphone 12</h2>
+      <h1>{{ iphone }}</h1>
       <div class="flex justify-center">
-        <img with="200" src="public/images/iphone-12.webp" alt="" />
-      </div>
-    </NuxtLink>
-    <NuxtLink
-      to="/iphone/iphone-12-pro"
-      class="shadow-lg border rounded-lg text-center"
-    >
-      <h2>Iphone 12 pro</h2>
-      <div class="flex justify-center">
-        <img with="200" src="public/images/iphone-12-pro.webp" alt="" />
+        <img width="200" :src="`/images/${iphone}.webp`" alt="" />
       </div>
     </NuxtLink>
   </div>
@@ -24,4 +17,11 @@
 useHead({
   title: "Nuxt3 - Iphones",
 });
+
+// const { data } = useFetch("/api/iphones");
+const { data } = useFetch("/iphones");
+console.log("server route", data.value);
+
+const iphones = data;
+// const iphones = ["iphone-12", "iphone-12-pro", "iphone-13", "iphone-13-pro"];
 </script>

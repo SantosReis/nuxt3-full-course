@@ -22,4 +22,8 @@ const pageVisitCount = ref(0);
 onMounted(() => {
   pageVisitCount.value = usePageVisitCount();
 });
+
+function logout() {
+  auth.value.isAuthenticated = false;
+}
 </script>
