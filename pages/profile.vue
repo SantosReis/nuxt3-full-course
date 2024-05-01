@@ -7,10 +7,6 @@
 <script setup>
 definePageMeta({
   layout: "sidebar",
-  middleware: () => {
-    // log("I am from middleware");
-    const auth = useAuth();
-    return auth.value.isAuthenticated;
-  },
+  middleware: ["auth"],
 });
 </script>
