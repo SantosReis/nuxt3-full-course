@@ -21,6 +21,7 @@
                     type="text"
                     class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Email address"
+                    v-model="form.email"
                   />
                 </div>
 
@@ -30,6 +31,7 @@
                     type="password"
                     class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Password"
+                    v-model="form.password"
                   />
                 </div>
 
@@ -40,7 +42,8 @@
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
                 >
-                  <span>Sign in</span>
+                  <span v-if="isLoading">Loading...</span>
+                  <span v-else>Sign in</span>
                 </button>
               </form>
             </div>
@@ -54,10 +57,20 @@
 <script setup>
 const url = "https://reqres.in/api/login";
 
+const isLoading = ref(false);
+
+const form = reactive({
+  email: "eve.holt@reqres.in",
+  password: "cityslicka",
+});
+
 async function onSubmit() {
-  const response = useFetch(url, {
+  if (isLoading.value) return;
+  const { data, error } = useFetch(url, {
     method: "post",
-    body: { email: "eve.holt@reqres.in", password: "cityslicka" },
+    body: form,
   });
+
+  console.log(data.value, error);
 }
 </script>
