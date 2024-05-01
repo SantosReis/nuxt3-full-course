@@ -88,7 +88,8 @@ async function onSubmit() {
   //   _error.value = "Login error";
   //   return;
   // }
-
+  const auth = useAuth();
+  auth.value.isAuthenticated = true;
   navigateTo("/");
 }
 </script>

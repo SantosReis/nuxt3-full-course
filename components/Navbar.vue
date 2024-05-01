@@ -7,9 +7,10 @@
     <nuxt-link to="/iphone">Iphones</nuxt-link>
     <nuxt-link to="/profile">Profile</nuxt-link>
     <p>Cart ({{ cart.length }})</p>
+    <p>{{ auth.isAuthenticated }}</p>
   </nav>
 </template>
 <script setup>
 const cart = useCart();
-// console.log(cart.value);
+const auth = useAuth();
 </script>
