@@ -7,7 +7,10 @@
     <nuxt-link to="/iphone">Iphones</nuxt-link>
     <nuxt-link to="/profile">Profile</nuxt-link>
     <p>Cart ({{ cart.length }})</p>
-    <p>{{ auth.isAuthenticated }}</p>
+    <div v-if="auth.isAuthenticated">
+      <NuxtLink to="/profile">Profile</NuxtLink>
+      <button class="ml-4" @click="logout">Logout</button>
+    </div>
   </nav>
 </template>
 <script setup>
