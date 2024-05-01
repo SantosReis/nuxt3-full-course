@@ -14,6 +14,11 @@
               />
             </div>
             <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
+              <div v-if="_error">
+                <p class="bg-red-500 text-red-200 text-sm p-3 mb-5">
+                  {{ _error }}
+                </p>
+              </div>
               <form @submit.prevent="onSubmit">
                 <!-- Email input -->
                 <div class="mb-6">
@@ -58,6 +63,7 @@
 const url = "https://reqres.in/api/login";
 
 const isLoading = ref(false);
+const _error = ref(null);
 
 const form = reactive({
   email: "eve.holt@reqres.in",
@@ -71,6 +77,18 @@ async function onSubmit() {
     body: form,
   });
 
-  console.log(data.value, error);
+  isLoading.value = false;
+  // if (error.value) {
+  //   _error.value = error.value.data.error;
+  //   return;
+  // }
+
+  // console.log("error:", error);
+  // if (error) {
+  //   _error.value = "Login error";
+  //   return;
+  // }
+
+  navigateTo("/");
 }
 </script>
